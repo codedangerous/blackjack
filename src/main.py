@@ -18,5 +18,24 @@ def main():
     deck.build_deck()
     deck.shuffle_deck()
 
+    print(f"Hello, {player.get_name()}!")
+
+    # ask the player if they're ready to be dealt in
+    # don't proceed until they answer yes (y)
+    question = f"Are you ready to be dealt in?"
+    ask_yes_no_question(question)
+
+def ask_yes_no_question(question):
+    not_ready = True
+    while not_ready:
+        answer = input(f"{question} (y or n): ").lower()
+        if answer == "y":
+            not_ready = False
+        elif answer == "n":
+            not_ready = True
+        else:
+            print("Sorry, I couldn't understand that. Please answer " \
+            "y or n")
+
 if __name__ == "__main__":
     main()
