@@ -6,6 +6,9 @@ class Card:
     def __repr__(self):
         return f"{self.__face} of {self.__suit}"
     
+    def get_face(self):
+        return self.__face
+    
     def get_value(self):
         match (self.__face):
             case 2:
