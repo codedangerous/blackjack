@@ -20,7 +20,7 @@ def main():
     deck.build_deck()
     deck.shuffle_deck()
 
-    print(f"Hello, {player.get_name()}!")
+    print(f"Hello, {player.get_name()}! I'm {dealer.get_name()}, your dealer.")
 
     # ask the player if they're ready to be dealt in
     # don't proceed until they answer yes (y)
@@ -35,7 +35,21 @@ def main():
     print(f"{player.get_name()}'s hand: {player.get_hand()} - {player.get_hand_value()}")
     print(f"{dealer.get_name()} is showing {dealer.get_hand()[0]} - {dealer.get_hand()[0].get_value()}")
 
+    print_divider()
 
+    # ask the player if they want to hit or stand
+    deck.hit_or_stand(player)
+
+    print_divider()
+
+    # once they're done, the deal should play regardless of whether or
+    # not the player busted
+    print(f"{dealer.get_name()} reveals his second card. It's a {dealer.get_hand()[1]}.")
+    print("")
+    print(f"{dealer.get_name()}'s hand: {dealer.get_hand()} - {dealer.get_hand_value()}")
+    deck.hit_or_stand(dealer)
+
+    print_divider()
 
 def ask_yes_no_question(question):
     not_ready = True
@@ -48,6 +62,10 @@ def ask_yes_no_question(question):
         else:
             print("Sorry, I couldn't understand that. Please answer " \
             "y or n")
+
+def hit_or_stand():
+    pass
+
 def print_divider():
     print("")
     print("==========")

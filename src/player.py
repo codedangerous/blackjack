@@ -2,6 +2,7 @@ class Player:
     def __init__(self, is_dealer=False):
         self.__name = None
         self.__is_dealer = is_dealer
+        self.__bust = False
         
         self.__hand = []
     
@@ -19,6 +20,15 @@ class Player:
     def get_name(self):
         return self.__name
     
+    def get_is_dealer(self):
+        return self.__is_dealer
+    
+    def set_bust(self):
+        self.__bust = True
+    
+    def get_bust(self):
+        return self.__bust
+    
     def add_card_to_hand(self, card):
         self.__hand.append(card)
     
@@ -35,4 +45,6 @@ class Player:
                     total_value += card.get_value()[0]
             else:
                 total_value += card.get_value()
+        if total_value > 21:
+            self.set_bust()
         return total_value
