@@ -35,16 +35,23 @@ class Player:
     def get_hand(self):
         return self.__hand
     
+    def clear_hand(self):
+        self.__hand.clear()
+    
     def get_hand_value(self):
         total_value = 0
+        aces_in_hand = 0
         for card in self.__hand:
             if card.get_face() == "Ace":
-                if total_value + card.get_value()[1] <= 21:
-                    total_value += card.get_value()[1]
-                else:
-                    total_value += card.get_value()[0]
+                aces_in_hand += 1
             else:
                 total_value += card.get_value()
+        if aces_in_hand > 0:
+            for i in range(0, aces_in_hand):
+                if total_value + 11 <= 21:
+                    total_value += 11
+                else:
+                    total_value += 1
         if total_value > 21:
             self.set_bust()
         return total_value

@@ -22,6 +22,9 @@ class Deck:
         player.add_card_to_hand(self.cards.pop())
 
     def deal_initial_hand(self, player, dealer):
+        player.clear_hand()
+        dealer.clear_hand()
+
         self.deal_single_card(player)
         self.deal_single_card(dealer)
         self.deal_single_card(player)
@@ -57,4 +60,3 @@ class Deck:
                     print("")
                     print("The dealer has busted!")
                     break
-            pass
